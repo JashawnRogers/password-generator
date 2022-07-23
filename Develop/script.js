@@ -13,17 +13,17 @@ var chosenPassword = [];
 
 // Write password to the #password input
 function writePassword() {
-  // var password = generatePassword();
+  
   var passwordText = document.querySelector("#password"); 
   lengthOfPassword = prompt("Choose a number between 8 and 128. This will be the length of your new password.");
 
   // checks for user input
-  if (!lengthOfPassword) {
+  if (lengthOfPassword == null) {
     alert("You must enter a value");
   } 
   // Checks if input is between 8 and 128
   else if (lengthOfPassword < 8 || lengthOfPassword > 128){
-    lengthOfPassword = prompt("Choose a number between 8 and 128. This will be the length of your new password.");
+      alert("Must choose a number in between 8 and 128");
   } else {
     // Then checks for rest of criteria
     userLowercase = confirm("Password contains lowercase characters?");
@@ -34,11 +34,11 @@ function writePassword() {
 
   // if statement for validation of confirm prompts
   // if all 4 options were denied
-  if (!userLowercase && !userUppercase && !userNumber && !userSpecialChar) {
+  if (!userLowercase && !userUppercase && !userNumber && !userSpecialChar && lengthOfPassword > 8 || lengthOfPassword < 128) {
     alert("You must choose at least one option.");
   } 
   // if all 4 options were chosen
-  else if (userLowercase && userUppercase && userNumber && userSpecialChar) {
+  if (userLowercase && userUppercase && userNumber && userSpecialChar) {
     chosenPassword = lowercase.concat(uppercase, number, specialChar);
   }
   // different variations if 3 options were chosen
@@ -87,10 +87,24 @@ function writePassword() {
     chosenPassword = number;
   }
 
-  console.log(chosenPassword);
 
-  // passwordText.value = password;
+  function generatePassword(){
+   //placeholder array to hold choices
+    var pw = [];
+    
+    //Randomly selects array items of chosenPassword based on value of lengthOfPassword 
+    for (var i = 0; i < lengthOfPassword; i++) {
+      var choices = chosenPassword[Math.floor(Math.random() * chosenPassword.length)];
 
+      pw.push(choices);
+    }
+
+    //Joins pw array and converts it to a string
+    var ps = pw.join(''); 
+    passwordText.textContent = ps;
+  }
+
+  generatePassword();
 }
 
 // Add event listener to generate button
