@@ -34,7 +34,7 @@ function writePassword() {
 
   // if statement for validation of confirm prompts
   // if all 4 options were denied
-  if (!userLowercase && !userUppercase && !userNumber && !userSpecialChar && lengthOfPassword > 8 || lengthOfPassword < 128) {
+  if (!userLowercase && !userUppercase && !userNumber && !userSpecialChar && lengthOfPassword > 8 && lengthOfPassword < 128) {
     alert("You must choose at least one option.");
   } 
   // if all 4 options were chosen
