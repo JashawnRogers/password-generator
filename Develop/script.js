@@ -22,7 +22,7 @@ function writePassword() {
     alert("You must enter a value");
   } 
   // Checks if input is between 8 and 128
-  else if (lengthOfPassword < 8 || lengthOfPassword > 128){
+  else if (lengthOfPassword <= 8 || lengthOfPassword >= 128){
       alert("Must choose a number in between 8 and 128");
   } else {
     // Then checks for rest of criteria
@@ -34,7 +34,7 @@ function writePassword() {
 
   // if statement for validation of confirm prompts
   // if all 4 options were denied
-  if (!userLowercase && !userUppercase && !userNumber && !userSpecialChar && lengthOfPassword > 8 && lengthOfPassword < 128) {
+  if (!userLowercase && !userUppercase && !userNumber && !userSpecialChar && lengthOfPassword >= 8 && lengthOfPassword <= 128) {
     alert("You must choose at least one option.");
   } 
   // if all 4 options were chosen
